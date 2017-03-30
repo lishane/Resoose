@@ -1,0 +1,53 @@
+
+
+<label>What kind of atmosphere do you want?</label>
+<div class="form-group">
+    <div class="radio">
+        <label>
+           <input type="radio" ng-model="formData.type" value="casual" checked>
+           I'm feeling casual today
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.type" value="formal">
+            Formal sounds nice
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.type" value="fast food">
+            Fast foods the way to go!
+        </label>
+    </div>
+</div>
+
+<label>Rating preferences?</label>
+<div class="form-group">
+    <div class="radio">
+        <label>
+           <input type="radio" ng-model="formData.rating" value="4" checked>
+           4+ stars!!!
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.rating" value="3">
+            Average is good enough
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.rating" value="1">
+            Give me everything, I've got a strong stomach
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+<div class="col-xs-6 col-xs-offset-3">
+    <a ui-sref="form.results" class="btn btn-block btn-info">
+    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+</div>
+</div>
