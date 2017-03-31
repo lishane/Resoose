@@ -24,4 +24,3 @@ nbdist/
 .nb-gradle/
 
 ### Secrets ###
-secrets.properties
