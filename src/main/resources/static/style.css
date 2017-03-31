@@ -1,25 +1,33 @@
 /* Basic Styling */
-body                            { padding-top:20px; }
+body                            { padding-top:20px; background-color: #4ABDAC}
 pre                             { margin-bottom:20px; }
 
-#form-container                { background:#2f2f2f; margin-bottom:20px;
+#form-container                { background: #FFA391; margin-bottom:20px;
     border-radius:5px; }
-#form-container .page-header   { background:#2196f3; margin:0; padding:30px; 
+#form-container .page-header   { background: #FFA391; margin:0; padding:30px;
     border-top-left-radius:5px; border-top-right-radius:5px; }
 
 #status-buttons                 {  }
 #status-buttons a               { color:#FFF; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase; }
 #status-buttons a:hover         { text-decoration:none; }
-#status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px; 
+#status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px;
     border-radius:50%; }
 
-#status-buttons a.active span   { background:#00BC8C; }
+#status-buttons a.active span   { background:#4ABDAC; }
+
+.btn {color:#ffffff;background-color:#4ABDAC;border-color:#4ABDAC}
+
+.btn:hover, .btn:focus, .btn:active, .btn.active, .open>.dropdown-toggle.btn {
+	color: #ffffff;
+	background-color: #4ABDAC;
+	border-color: #4ABDAC; /*set the color you want here*/
+}
 
 #form { position:relative; min-height:300px; overflow:hidden; padding:30px; }
 
 #form-views.ng-enter,
 #form-views.ng-leave      { position:absolute; left:30px; right:30px;
-    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease; 
+    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease;
 }
     
 #form-views.ng-enter            {

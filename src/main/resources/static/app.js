@@ -1,4 +1,10 @@
+var formData = {
+    'term': 'food',
+    'price': '1,2,3,4'
+};
+
 angular.module('formApp', ['ngAnimate', 'ui.router'])
+
 
     .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -26,14 +32,32 @@ angular.module('formApp', ['ngAnimate', 'ui.router'])
         $urlRouterProvider.otherwise('/home');
     })
 
+
     .controller('formController', function ($scope, $http) {
+        $scope.formData = formData;
+    })
 
-        $scope.formData = {};
+    .controller('resultController', function ($scope, $http) {
+        var lat;
+        var long;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
 
-        $http.get('/business/random')
-            .then(function(response) {
-                $scope.data = response.data;
+                lat = position.coords.latitude;
+                long = position.coords.longitude;
+                console.log(lat);
+                console.log(long);
+
+                var randomUrl = '/business/random?term=' + formData.term + '&latitude=' + lat + '&longitude=' + long + '&price=' + formData.price;
+                console.log(randomUrl);
+                $http.get(randomUrl)
+                    .then(function (response) {
+                        $scope.data = response.data;
+                    });
             });
 
+        }
     });
+
+
 
