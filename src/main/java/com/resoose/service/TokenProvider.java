@@ -16,6 +16,7 @@ import java.util.Properties;
 /**
  * Created by shane on 3/29/17.
  */
+
 @Component
 public class TokenProvider {
 

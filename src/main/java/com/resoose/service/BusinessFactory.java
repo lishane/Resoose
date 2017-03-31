@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.Random;
 
 /**
  * Created by shane on 3/29/17.
@@ -13,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class BusinessFactory {
 
-    public static final String searchUrl = "https://api.yelp.com/v3/businesses/search?term=food&limit=10&latitude=37.786882&longitude=-122.399972&radius=";
+    public static final String searchUrl = "https://api.yelp.com/v3/businesses/search";
 
     @Autowired
     private TokenProvider tokenProvider;
@@ -26,12 +29,21 @@ public class BusinessFactory {
         return new HttpEntity<>(headers);
 
     }
-    public FusionBusiness getRandomRestaurant() {
+    public FusionBusiness getRandomRestaurant(String term, String longitude, String latitude, String price) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(searchUrl)
+                .queryParam("term", term)
+                .queryParam("longitude", longitude)
+                .queryParam("latitude", latitude)
+                .queryParam("price", price);
+
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<FusionSearch> response =  restTemplate.exchange(searchUrl, HttpMethod.GET, prepareHttpEntity(), FusionSearch.class);
+        System.out.println(builder.buildAndExpand().toUri());
+        ResponseEntity<FusionSearch> response =  restTemplate.exchange(builder.buildAndExpand().toUri(), HttpMethod.GET, prepareHttpEntity(), FusionSearch.class);
         FusionSearch fusionSearch = response.getBody();
 
-        return fusionSearch.getBusinesses().get(0);
+        Random random = new Random();
+        int generateNumber = random.nextInt(fusionSearch.getBusinesses().size());
+        return fusionSearch.getBusinesses().get(generateNumber);
     }
 
     public String getFusionToken() {
