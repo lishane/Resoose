@@ -23,5 +23,4 @@ public class BusinessController {
     public FusionBusiness getRandomBusiness(@RequestParam String term, @RequestParam String longitude, @RequestParam String latitude, @RequestParam String price) {
         return businessFactory.getRandomRestaurant(term, longitude, latitude, price);
     }
-
 }

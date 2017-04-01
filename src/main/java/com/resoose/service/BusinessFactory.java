@@ -38,7 +38,13 @@ public class BusinessFactory {
 
         RestTemplate restTemplate = new RestTemplate();
         System.out.println(builder.buildAndExpand().toUri());
-        ResponseEntity<FusionSearch> response =  restTemplate.exchange(builder.buildAndExpand().toUri(), HttpMethod.GET, prepareHttpEntity(), FusionSearch.class);
+        ResponseEntity<FusionSearch> response;
+        try {
+            response = restTemplate.exchange(builder.buildAndExpand().toUri(), HttpMethod.GET, prepareHttpEntity(), FusionSearch.class);
+        } catch (Exception e) {
+            tokenProvider.refreshToken();
+            response = restTemplate.exchange(builder.buildAndExpand().toUri(), HttpMethod.GET, prepareHttpEntity(), FusionSearch.class);
+        }
         FusionSearch fusionSearch = response.getBody();
 
         Random random = new Random();
