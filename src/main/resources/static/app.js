@@ -8,9 +8,11 @@ angular.module('formApp', ['ngAnimate', 'ui.router'])
 
     .config(function ($stateProvider, $urlRouterProvider) {
 
+        $urlRouterProvider.otherwise('/resoose/home');
+
         $stateProvider
             .state('form', {
-                url: '',
+                url: '/resoose',
                 templateUrl: 'form.html',
                 controller: 'formController'
             })
@@ -29,17 +31,23 @@ angular.module('formApp', ['ngAnimate', 'ui.router'])
                 templateUrl: 'form-results.html'
             });
 
-        $urlRouterProvider.otherwise('/home');
     })
 
 
-    .controller('formController', function ($scope, $http) {
+    .controller('formController', function ($scope) {
         $scope.formData = formData;
     })
 
-    .controller('resultController', function ($scope, $http) {
-        var lat;
-        var long;
+    .controller('resultController', function ($scope, $http, $sce) {
+        var lat = 37.7749;
+        var long = 122.4194;
+        console.log("ran");
+
+        $scope.getMapsSrc = function(mapsQuery) {
+            console.log("Map Query");
+            return $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyCeMsSd6Yom3eNEH-AiaCO6tNuIvTcDTBw&q=" + mapsQuery);
+        };
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -48,10 +56,11 @@ angular.module('formApp', ['ngAnimate', 'ui.router'])
                 console.log(lat);
                 console.log(long);
 
-                var randomUrl = '/business/random?term=' + formData.term + '&latitude=' + lat + '&longitude=' + long + '&price=' + formData.price;
+                var randomUrl = '/business/random?term=' + formData.term +'%20food' + '&latitude=' + lat + '&longitude=' + long + '&price=' + formData.price;
                 console.log(randomUrl);
                 $http.get(randomUrl)
                     .then(function (response) {
+                        response.data.location.mapsQuery = response.data.location.address1.replace(/ /g, '+');
                         $scope.data = response.data;
                     });
             });

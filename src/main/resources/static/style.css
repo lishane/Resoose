@@ -1,67 +1,190 @@
 /* Basic Styling */
-body                            { padding-top:20px; background-color: #4ABDAC}
-pre                             { margin-bottom:20px; }
 
-#form-container                { background: #FFA391; margin-bottom:20px;
-    border-radius:5px; }
-#form-container .page-header   { background: #FFA391; margin:0; padding:30px;
-    border-top-left-radius:5px; border-top-right-radius:5px; }
+body {
+	padding-top: 20px;
+	background-color: #ffffff;
+}
 
-#status-buttons                 {  }
-#status-buttons a               { color:#FFF; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase; }
-#status-buttons a:hover         { text-decoration:none; }
-#status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px;
-    border-radius:50%; }
+pre {
+	margin-bottom: 20px;
+}
 
-#status-buttons a.active span   { background:#4ABDAC; }
+#form-container {
+	background: rgba(24,24,24,.80);
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
 
-.btn {color:#ffffff;background-color:#4ABDAC;border-color:#4ABDAC}
+#form-container .page-header {
+	background: rgba(24,24,24,.80);
+	margin: 0;
+	padding: 30px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
 
-.btn:hover, .btn:focus, .btn:active, .btn.active, .open>.dropdown-toggle.btn {
+#status-buttons {}
+
+#status-buttons a {
+	color: #FFF;
+	display: inline-block;
+	font-size: 12px;
+	margin-right: 10px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#status-buttons a:hover {
+	text-decoration: none;
+}
+
+#status-buttons span {
+	background: rgba(255,255,255,1);
+	color: #111;
+	display: block;
+	height: 30px;
+	margin: 0 auto 10px;
+	padding-top: 5px;
+	width: 30px;
+	border-radius: 50%;
+}
+
+#status-buttons a.active span {
+	background: #F7B733;
+}
+
+.btn {
 	color: #ffffff;
 	background-color: #4ABDAC;
-	border-color: #4ABDAC; /*set the color you want here*/
+	border-color: #4ABDAC
 }
 
-#form { position:relative; min-height:300px; overflow:hidden; padding:30px; }
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.open>.dropdown-toggle.btn {
+	color: #ffffff;
+	background-color: #4ABDAC;
+	border-color: #4ABDAC;
+	/*set the color you want here*/
+}
+
+#form {
+	position: relative;
+	min-height: 300px;
+	overflow: hidden;
+	padding: 30px;
+}
 
 #form-views.ng-enter,
-#form-views.ng-leave      { position:absolute; left:30px; right:30px;
-    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease;
-}
-    
-#form-views.ng-enter            {
-    -webkit-animation:slideInRight 0.5s both ease;
-	-moz-animation:slideInRight 0.5s both ease;
-	animation:slideInRight 0.5s both ease; 
+#form-views.ng-leave {
+	position: absolute;
+	left: 30px;
+	right: 30px;
+	transition: 0.5s all ease;
+	-moz-transition: 0.5s all ease;
+	-webkit-transition: 0.5s all ease;
 }
 
-#form-views.ng-leave            {
-    -webkit-animation:slideOutLeft 0.5s both ease;
-	-moz-animation:slideOutLeft 0.5s both ease;
-	animation:slideOutLeft 0.5s both ease;   
+#form-views.ng-enter {
+	-webkit-animation: slideInRight 0.5s both ease;
+	-moz-animation: slideInRight 0.5s both ease;
+	animation: slideInRight 0.5s both ease;
+}
+
+#form-views.ng-leave {
+	-webkit-animation: slideOutLeft 0.5s both ease;
+	-moz-animation: slideOutLeft 0.5s both ease;
+	animation: slideOutLeft 0.5s both ease;
+}
+
+#results {
+	background: #ffffff;
+	color: #000;
+	padding: 0;
+	width: 100%;
+	border-radius: 5px;
+}
+
+#results .img {
+	height: 300px;
+	width: 100%;
+	border-radius: 5px 5px 0 0;
+	background-size: cover;
+}
+
+#review {
+	margin-bottom: 10px;
+}
+
+#review .bar {
+	height: 15px;
+	width: 80px;
+	background: #eee;
+	margin: 5px auto; /* center */
+}
+
+#review .bar .bar-highlight {
+	height: 100%;
+	background: #FFD600;
+}
+
+#results .contents {
+	padding: 15px;
+}
+
+#results .contents span.glyphicon {
+	margin-right: 5px;
+}
+
+#results iframe {
+	position: relative;
+	top: 5px;
+
+	border-radius: 0 0 5px 5px;
 }
 
 @keyframes slideOutLeft {
-	to 		{ transform: translateX(-200%); }
-}
-@-moz-keyframes slideOutLeft {	
-	to 		{ -moz-transform: translateX(-200%); }
-}
-@-webkit-keyframes slideOutLeft {
-	to 		{ -webkit-transform: translateX(-200%); }
+	to {
+		transform: translateX(-200%);
+	}
 }
 
+@-moz-keyframes slideOutLeft {
+	to {
+		-moz-transform: translateX(-200%);
+	}
+}
+
+@-webkit-keyframes slideOutLeft {
+	to {
+		-webkit-transform: translateX(-200%);
+	}
+}
 /* slide in from the right */
+
 @keyframes slideInRight {
-	from 	{ transform:translateX(200%); }
-	to 		{ transform: translateX(0); }
+	from {
+		transform: translateX(200%);
+	}
+	to {
+		transform: translateX(0);
+	}
 }
 @-moz-keyframes slideInRight {
-	from 	{ -moz-transform:translateX(200%); }
-	to 		{ -moz-transform: translateX(0); }
+	from {
+		-moz-transform: translateX(200%);
+	}
+	to {
+		-moz-transform: translateX(0);
+	}
 }
 @-webkit-keyframes slideInRight {
-	from 	{ -webkit-transform:translateX(200%); }
-	to 		{ -webkit-transform: translateX(0); }
+	from {
+		-webkit-transform: translateX(200%);
+	}
+	to {
+		-webkit-transform: translateX(0);
+	}
 }
