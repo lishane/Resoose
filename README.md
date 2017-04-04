@@ -4,7 +4,7 @@ My submission for the 2017 Capitol One Software Engineering Summit
 
 Resoose aims to solve the problem of choosing a place to eat. Where does the name come from? That's a good question It is actually just a combination of "Restaurant" and "Choose". When you put the two together, you get Resoose! Clever, right? I know, thanks :)
 
-The app is deployed at https://resoose.herokuapp.com/, check it out!
+The app is deployed at https://resoose.herokuapp.com/, check it out! Might be a little slow, so give it sometime to run, especially on the results page. There is a small bug where sometimes the google map function might not work correctly.
 
 Your location is based on HTML5 geoloation, if that is not available, San Francisco is used as default location.
 
